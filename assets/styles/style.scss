@@ -21,9 +21,33 @@ html {
 .body-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   max-width: 100vw;
   min-height: 100vh;
   margin: 0 auto;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 10px;
+}
+
+input {
+  border-radius: 5px;
+}
+
+input[type="button"]:hover {
+  opacity: 0.5;
+}
+
+input[type="button"]:active {
+  background-color: green;
 }
