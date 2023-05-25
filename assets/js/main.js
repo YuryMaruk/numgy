@@ -15,7 +15,7 @@ let firstNum, secondNum, thirdNum, fourthNum;
 function handler() {
   firstNum = createFirstNum(dateBirthday.value);
   secondNum = createSecondNum(firstNum);
-  thirdNum = createThirdNum(dateBirthday.value);
+  thirdNum = createThirdNum(dateBirthday.value, firstNum);
   fourthNum = createSecondNum(thirdNum);
   arrNums = [firstNum, secondNum, thirdNum, fourthNum];
   showSecWorkNum(arrNums, secWorkNum);
@@ -34,10 +34,10 @@ function createSecondNum(num) {
   return num > 12 ? String(num).split('').reduce((acc, item) => acc + Number(item), 0) : num;
 }
 
-function createThirdNum(dateValue){
+function createThirdNum(dateValue, num){
   arr = dateValue.split('-').join('').split('').reverse();
   result = arr[1] > 0 ? arr[1] : arr[0];
-  return 35 - (2 * result);
+  return num - (2 * result);
 }
 
 function showSecWorkNum (arr, elem){
