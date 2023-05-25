@@ -22,11 +22,44 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
+  <link rel="stylesheet" href="./assets/styles/reset-settings.css">
+  <link rel="stylesheet" href="./assets/styles/style.css">
   <title>Numgy</title>
 </head>
 
 <body>
-
+  <div class="body-container">
+    <header class="header"></header>
+    <main class="main">
+      <form class="form">
+        <input class="first-name" type="text" placeholder="Имя">
+        <input class="second-name" type="text" placeholder="Отчество">
+        <input class="family" type="text" placeholder="Фамилия">
+        <input class="date-birthday" type="date">
+        <input class="button-count" type="button" value="Рассчитать">
+      </form>
+      <input type="text" class="second-working-number"></input>
+      <div class="pythagoras-matrix">
+        <div class="string">
+          <div id="1" class="column"></div>
+          <div id="4" class="column"></div>
+          <div id="7" class="column"></div>
+        </div>
+        <div class="string">
+          <div id="2" class="column"></div>
+          <div id="5" class="column"></div>
+          <div id="8" class="column"></div>
+        </div>
+        <div class="string">
+          <div id="3" class="column"></div>
+          <div id="6" class="column"></div>
+          <div id="9" class="column"></div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer"></footer>
+  </div>
+  <script src="./assets/js/main.js"></script>
 </body>
 
 </html>
