@@ -1,4 +1,4 @@
-import ruAlph from "./ruAlph";
+import ruAlph from "./ruAlph.js";
 
 const firstName = document.querySelector(".first-name");
 const secondName = document.querySelector(".second-name");
@@ -12,6 +12,7 @@ const person = {
   sName: secondName.value,
   family: family.value
 }
+const alphabet = ruAlph;
 
 let firstNum, secondNum, thirdNum, fourthNum;
 
@@ -60,11 +61,19 @@ function parserNodeList(list, arr) {
   });
 }
 
-function translater(string){
+function translater(str, alph){
+  str = str.toLowerCase().split('');
+  let array = alph;
+  array.splice(0, 1);
 
-console.log(ruAlph);
-  return numsResult;
+  str.forEach((item, i) => {
+    array.forEach((el, ind) => {
+      if (el.includes(item)) {
+        str[i]= ind + 1;
+      }
+    })
+  })
+  return str.join('');
 }
-
 
 
