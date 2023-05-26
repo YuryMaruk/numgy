@@ -1,3 +1,5 @@
+import ruAlph from "./ruAlph";
+
 const firstName = document.querySelector(".first-name");
 const secondName = document.querySelector(".second-name");
 const family = document.querySelector(".family");
@@ -5,13 +7,17 @@ const dateBirthday = document.querySelector(".date-birthday");
 const btnCount = document.querySelector(".button-count");
 const secWorkNum = document.querySelector(".second-working-number");
 const columnsList = document.querySelectorAll('.column');
-
-btnCount.addEventListener('click', handler);
+const person = {
+  fName: firstName.value,
+  sName: secondName.value,
+  family: family.value
+}
 
 let firstNum, secondNum, thirdNum, fourthNum;
 
-console.log(columnsList)
 
+
+btnCount.addEventListener('click', handler);
 
 function handler() {
   firstNum = createFirstNum(dateBirthday.value);
@@ -25,6 +31,9 @@ function handler() {
   arr = stringMatrix.split('');
   parserNodeList(columnsList, arr);
 }
+
+
+
 
 function createFirstNum(dateValue) {
   return dateValue.split('-').join('').split('').reduce((acc, item) => acc + Number(item), 0);
@@ -49,6 +58,12 @@ function parserNodeList(list, arr) {
     resultArray = arr.filter(item => item === element.id);
     element.innerText = resultArray.join('');
   });
+}
+
+function translater(string){
+
+console.log(ruAlph);
+  return numsResult;
 }
 
 
