@@ -63,9 +63,7 @@ function parserNodeList(list, arr) {
 
 function translater(str, alph) {
   str = str.toLowerCase().split('');
-  let array = alph;
-  array.splice(0, 1);
-
+  let array = alph.slice().slice(1);
   str.forEach((item, i) => {
     array.forEach((el, ind) => {
       if (el.includes(item)) {
@@ -88,9 +86,7 @@ function getChI(str, alph) {
       result = sumLetter(String(result));
       resultStr.push(result);
     }
-
   }
-
   let temp = resultStr.filter(num => notRedNum.includes(num));
   let answ = temp.map(item => '/' + item).join('').substring(1);
   return answ;
@@ -100,4 +96,25 @@ function sumLetter(str) {
   return str.split('').map(item => Number(item)).reduce((acc, item) => acc + item, 0)
 }
 
-console.log(getChI('ъвава', alphabet));
+function getChV(str1, str2, str3, alph) {
+  let notRedNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  let resultStr = [];
+  let str = [];
+  for (let i = 0; i < 3; i++) {
+    str.push(translater(arguments[i], alph));
+
+  }
+  let result = str.reduce((acc, item) => acc +  sumLetter(item), 0);
+  if (String(result).length === 1) {
+    resultStr.push(result);
+  } else {
+    resultStr.push(result);
+    while (result > 9) {
+      result = sumLetter(String(result));
+      resultStr.push(result);
+    }
+  }
+  let temp = resultStr.filter(num => notRedNum.includes(num));
+  let answ = temp.map(item => '/' + item).join('').substring(1);
+  return answ;
+}
