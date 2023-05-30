@@ -25,11 +25,11 @@ function handler() {
   secondNum = createSecondNum(firstNum);
   thirdNum = createThirdNum(dateBirthday.value, firstNum);
   fourthNum = createSecondNum(thirdNum);
-  arrNums = [firstNum, secondNum, thirdNum, fourthNum];
+  let arrNums = [firstNum, secondNum, thirdNum, fourthNum];
   showSecWorkNum(arrNums, secWorkNum);
-  arrMatrix = arrNums.concat(dateBirthday.value.split('-').join(''));
-  stringMatrix = arrMatrix.join('');
-  arr = stringMatrix.split('');
+  let arrMatrix = arrNums.concat(dateBirthday.value.split('-').join(''));
+  let stringMatrix = arrMatrix.join('');
+  let arr = stringMatrix.split('');
   parserNodeList(columnsList, arr);
 }
 
@@ -45,8 +45,8 @@ function createSecondNum(num) {
 }
 
 function createThirdNum(dateValue, num) {
-  arr = dateValue.split('-').join('').split('').reverse();
-  result = arr[1] > 0 ? arr[1] : arr[0];
+  let arr = dateValue.split('-').join('').split('').reverse();
+  let result = arr[1] > 0 ? arr[1] : arr[0];
   return num - (2 * result);
 }
 
@@ -56,7 +56,7 @@ function showSecWorkNum(arr, elem) {
 
 function parserNodeList(list, arr) {
   list.forEach(element => {
-    resultArray = arr.filter(item => item === element.id);
+    let resultArray = arr.filter(item => item === element.id);
     element.innerText = resultArray.join('');
   });
 }
@@ -117,4 +117,44 @@ function getChV(str1, str2, str3, alph) {
   let temp = resultStr.filter(num => notRedNum.includes(num));
   let answ = temp.map(item => '/' + item).join('').substring(1);
   return answ;
+}
+
+function getChInd(str1, str2, str3, alph){
+  let str = [];
+  let vowelsArray = alph[0].split('');
+  for (let i = 0; i < 3; i++) {
+    str.push(arguments[i]);
+  }
+  str = str.join('').toLocaleLowerCase().split('');
+  str = str.filter(char => !vowelsArray.includes(char)).join('');
+  let result = translater(str, alph);
+
+  if (result.length === 1) {
+    return result;
+  } else {
+    while (result.length !== 1) {
+      result = String(sumLetter(result));
+    }
+    return result;
+  }
+}
+
+function getChJ(str1, str2, str3, alph){
+  let str = [];
+  let vowelsArray = alph[0].split('');
+  for (let i = 0; i < 3; i++) {
+    str.push(arguments[i]);
+  }
+  str = str.join('').toLocaleLowerCase().split('');
+  str = str.filter(char => vowelsArray.includes(char)).join('');
+  let result = translater(str, alph);
+
+  if (result.length === 1) {
+    return result;
+  } else {
+    while (result.length !== 1) {
+      result = String(sumLetter(result));
+    }
+    return result;
+  }
 }
