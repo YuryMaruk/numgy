@@ -27,6 +27,13 @@ html {
   margin: 0 auto;
 }
 
+.header {
+  margin-top: 10px;
+  width: 139px;
+  height: 117px;
+  background: url(../icons/numgy_logo.png) no-repeat center;
+}
+
 .main {
   display: flex;
   flex-direction: column;
