@@ -7,11 +7,8 @@ const dateBirthday = document.querySelector(".date-birthday");
 const btnCount = document.querySelector(".button-count");
 const secWorkNum = document.querySelector(".second-working-number");
 const columnsList = document.querySelectorAll('.column');
-const person = {
-  fName: firstName.value,
-  sName: secondName.value,
-  family: family.value
-}
+const numbersList = document.querySelectorAll('.numbers2');
+
 const alphabet = ruAlph;
 
 let firstNum, secondNum, thirdNum, fourthNum;
@@ -21,6 +18,11 @@ let firstNum, secondNum, thirdNum, fourthNum;
 btnCount.addEventListener('click', handler);
 
 function handler() {
+  const person = {
+    fName: firstName.value,
+    sName: secondName.value,
+    family: family.value
+  }
   firstNum = createFirstNum(dateBirthday.value);
   secondNum = createSecondNum(firstNum);
   thirdNum = createThirdNum(dateBirthday.value, firstNum);
@@ -31,6 +33,7 @@ function handler() {
   let stringMatrix = arrMatrix.join('');
   let arr = stringMatrix.split('');
   parserNodeList(columnsList, arr);
+  addNumbers(person.fName, person.sName, person.family, numbersList, alphabet);
 }
 
 
@@ -157,4 +160,10 @@ function getChJ(str1, str2, str3, alph){
     }
     return result;
   }
+}
+
+function addNumbers (name, secName, fam, list, alph) {
+  let resultArr = ['ЧИ: ' + getChI(name, alph), 'ЧВ: '+ getChV(name, secName, fam, alph),
+  'Чинд: ' + getChInd(name, secName, fam, alph), 'ЧЖС: ' + getChJ(name, secName, fam, alph)]
+  list.forEach((item, index, arr) => item.innerText = resultArr[index]);
 }
