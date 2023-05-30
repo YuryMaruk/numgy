@@ -32,9 +32,9 @@
     <header class="header"></header>
     <main class="main">
       <form class="form">
-        <input class="first-name" type="text" placeholder="Имя">
-        <input class="second-name" type="text" placeholder="Отчество">
-        <input class="family" type="text" placeholder="Фамилия">
+        <input class="first-name" type="text" placeholder="Имя" maxlength="20">
+        <input class="second-name" type="text" placeholder="Отчество" maxlength="20">
+        <input class="family" type="text" placeholder="Фамилия" maxlength="20">
         <input class="date-birthday" type="date">
         <input class="button-count" type="button" value="Рассчитать">
       </form>
@@ -56,10 +56,20 @@
           <div id="9" class="column"></div>
         </div>
       </div>
+      <div class="numbers">
+        <div class="numbers1">
+          <div class="numbers2"></div>
+          <div class="numbers2"></div>
+        </div>
+        <div class="numbers1">
+          <div class="numbers2"></div>
+          <div class="numbers2"></div>
+        </div>
+      </div>
     </main>
     <footer class="footer"></footer>
   </div>
-  <script src="./assets/js/main.js"></script>
+  <script src="./assets/js/main.js" type="module"></script>
 </body>
 
 </html>

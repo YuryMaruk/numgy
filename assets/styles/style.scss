@@ -27,6 +27,13 @@ html {
   margin: 0 auto;
 }
 
+.header {
+  margin-top: 10px;
+  width: 139px;
+  height: 117px;
+  background: url(../icons/numgy_logo.png) no-repeat center;
+}
+
 .main {
   display: flex;
   flex-direction: column;
@@ -71,6 +78,16 @@ input[type="button"]:active {
   width: 70px;
   height: 70px;
   border: 1px solid;
+  justify-content: center;
+  align-items: center;
+}
+
+.numbers1 {
+  display: flex;
+}
+.numbers2 {
+  display: flex;
+  width: 100px;
   justify-content: center;
   align-items: center;
 }
