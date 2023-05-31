@@ -81,4 +81,14 @@ input[type=button]:active {
   width: 100px;
   justify-content: center;
   align-items: center;
+}
+
+.result {
+  width: 100%;
+}
+
+.result1 {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */

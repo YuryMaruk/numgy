@@ -1,5 +1,7 @@
 import ruAlph from "./ruAlph.js";
 
+const CURRENT_YEAR = '2023';
+
 const firstName = document.querySelector(".first-name");
 const secondName = document.querySelector(".second-name");
 const family = document.querySelector(".family");
@@ -21,7 +23,8 @@ function handler() {
   const person = {
     fName: firstName.value,
     sName: secondName.value,
-    family: family.value
+    family: family.value,
+    bithday: dateBirthday.value.split('-').reverse()
   }
   firstNum = createFirstNum(dateBirthday.value);
   secondNum = createSecondNum(firstNum);
@@ -107,7 +110,7 @@ function getChV(str1, str2, str3, alph) {
     str.push(translater(arguments[i], alph));
 
   }
-  let result = str.reduce((acc, item) => acc +  sumLetter(item), 0);
+  let result = str.reduce((acc, item) => acc + sumLetter(item), 0);
   if (String(result).length === 1) {
     resultStr.push(result);
   } else {
@@ -122,7 +125,7 @@ function getChV(str1, str2, str3, alph) {
   return answ;
 }
 
-function getChInd(str1, str2, str3, alph){
+function getChInd(str1, str2, str3, alph) {
   let str = [];
   let vowelsArray = alph[0].split('');
   for (let i = 0; i < 3; i++) {
@@ -142,7 +145,7 @@ function getChInd(str1, str2, str3, alph){
   }
 }
 
-function getChJ(str1, str2, str3, alph){
+function getChJ(str1, str2, str3, alph) {
   let str = [];
   let vowelsArray = alph[0].split('');
   for (let i = 0; i < 3; i++) {
@@ -162,8 +165,62 @@ function getChJ(str1, str2, str3, alph){
   }
 }
 
-function addNumbers (name, secName, fam, list, alph) {
-  let resultArr = ['ЧИ: ' + getChI(name, alph), 'ЧВ: '+ getChV(name, secName, fam, alph),
+function addNumbers(name, secName, fam, list, alph) {
+  let resultArr = ['ЧИ: ' + getChI(name, alph), 'ЧВ: ' + getChV(name, secName, fam, alph),
   'Чинд: ' + getChInd(name, secName, fam, alph), 'ЧЖС: ' + getChJ(name, secName, fam, alph)]
-  list.forEach((item, index, arr) => item.innerText = resultArr[index]);
+  list.forEach((item, index) => item.innerText = resultArr[index]);
+}
+
+function getLider(dateOfBirthdayArray) {
+  let result = dateOfBirthdayArray.reduce((acc, item) => acc * Number(item), 1);
+  return sumLetter(String(result));
+}
+
+function getCharisma(dateOfBirthdayArray) {
+  let result = dateOfBirthdayArray[0] + dateOfBirthdayArray[1];
+  result = Number(result) * Number(dateOfBirthdayArray[2]);
+  return sumLetter(String(result));
+}
+
+function getChance(dateOfBirthdayArray) {
+  let result = dateOfBirthdayArray[1] + dateOfBirthdayArray[2];
+  result = Number(dateOfBirthdayArray[0] * Number(result));
+  return sumLetter(String(result));
+}
+
+function getLifeCicle(secNum, currentYear) {
+  let result = sumLetter(currentYear);
+  while (result > 9) {
+    result = sumLetter(String(result));
+  }
+
+  result = result + Number(secNum);
+  while (result > 9) {
+    result = sumLetter(String(result));
+  }
+
+  return result;
+}
+
+function getPointOfObstruction(dateOfBirthdayArray) {
+  let result = Number(dateOfBirthdayArray[0]);
+  if (result > 22) {
+    result = result - 22;
+  }
+  result = result + Number(dateOfBirthdayArray[1]);
+  if (result > 22) {
+    result = result - 22;
+  }
+  return result;
+}
+
+function getChZ(str1, str2){
+  let result = Number(str1) + Number(str2);
+  while(result > 9) {
+    if(result === 22 || result === 11){
+      break;
+    }
+    result = sumLetter(String(result));
+  }
+  return result;
 }
