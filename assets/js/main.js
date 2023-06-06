@@ -10,6 +10,7 @@ const btnCount = document.querySelector(".button-count");
 const secWorkNum = document.querySelector(".second-working-number");
 const columnsList = document.querySelectorAll('.column');
 const numbersList = document.querySelectorAll('.numbers2');
+const result2List = document.querySelectorAll('.result2');
 
 const alphabet = ruAlph;
 
@@ -37,6 +38,7 @@ function handler() {
   let arr = stringMatrix.split('');
   parserNodeList(columnsList, arr);
   addNumbers(person.fName, person.sName, person.family, numbersList, alphabet);
+  showNumbers2(person.bithday, secondNum, getChV(person.fName, person.sName, person.family, alphabet), CURRENT_YEAR, result2List);
 }
 
 
@@ -171,6 +173,8 @@ function addNumbers(name, secName, fam, list, alph) {
   list.forEach((item, index) => item.innerText = resultArr[index]);
 }
 
+// Numbers2
+
 function getLider(dateOfBirthdayArray) {
   let result = dateOfBirthdayArray.reduce((acc, item) => acc * Number(item), 1);
   return sumLetter(String(result));
@@ -189,7 +193,7 @@ function getChance(dateOfBirthdayArray) {
 }
 
 function getLifeCicle(secNum, currentYear) {
-  let result = sumLetter(currentYear);
+  let result = sumLetter(String(currentYear));
   while (result > 9) {
     result = sumLetter(String(result));
   }
@@ -223,4 +227,11 @@ function getChZ(str1, str2){
     result = sumLetter(String(result));
   }
   return result;
+}
+
+function showNumbers2 (dateOfBirthdayArray, secNum, chislV, curYear, listNodes) {
+  let resultArr = ['ПР: ' + getLider(dateOfBirthdayArray), 'ХРЗ: ' + getCharisma(dateOfBirthdayArray),
+   'Ш: ' + getCharisma(dateOfBirthdayArray), 'ЖЦ: ' + getLifeCicle(secNum, curYear),
+  'ТП: ' + getPointOfObstruction(dateOfBirthdayArray), 'ЧЗ: ' + getChZ(String(secNum), chislV.split('/').slice(-1))];
+  listNodes.forEach((item, index) => item.innerText = resultArr[index]);
 }
