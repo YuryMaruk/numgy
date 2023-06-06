@@ -231,7 +231,7 @@ function getChZ(str1, str2){
 
 function showNumbers2 (dateOfBirthdayArray, secNum, chislV, curYear, listNodes) {
   let resultArr = ['ПР: ' + getLider(dateOfBirthdayArray), 'ХРЗ: ' + getCharisma(dateOfBirthdayArray),
-   'Ш: ' + getCharisma(dateOfBirthdayArray), 'ЖЦ: ' + getLifeCicle(secNum, curYear),
+   'Ш: ' + getChance(dateOfBirthdayArray), 'ЖЦ: ' + getLifeCicle(secNum, curYear),
   'ТП: ' + getPointOfObstruction(dateOfBirthdayArray), 'ЧЗ: ' + getChZ(String(secNum), chislV.split('/').slice(-1))];
   listNodes.forEach((item, index) => item.innerText = resultArr[index]);
 }
